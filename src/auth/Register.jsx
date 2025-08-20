@@ -26,11 +26,11 @@ export default function Register() {
       <form action={tryRegister}>
         <label>
           Username
-          <input type="text" name="username" required />
+          <input type='text' name='username' required />
         </label>
         <label>
           Password
-          <input type="password" name="password" required />
+          <input type='password' name='password' required />
         </label>
         <button>Register</button>
         {error && <output>{error}</output>}
