@@ -3,18 +3,18 @@
  * It also handles tags to refresh appropriate queries after a mutation.
  */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
-import { useAuth } from "../auth/AuthContext";
+import { useAuth } from '../auth/AuthContext';
 
-export const API = "https://fitnesstrac-kr.herokuapp.com/api";
+export const API = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 const ApiContext = createContext();
 
 export function ApiProvider({ children }) {
   const { token } = useAuth();
-  const headers = { "Content-Type": "application/json" };
-  if (token) headers["Authorization"] = `Bearer ${token}`;
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
 
   /**
    * Makes an API call and parses the response as JSON if possible.
@@ -25,9 +25,9 @@ export function ApiProvider({ children }) {
       ...options,
       headers,
     });
-    const isJson = /json/.test(response.headers.get("Content-Type"));
+    const isJson = /json/.test(response.headers.get('Content-Type'));
     const result = isJson ? await response.json() : undefined;
-    if (!response.ok) throw Error(result?.message ?? "Something went wrong :(");
+    if (!response.ok) throw Error(result?.message ?? 'Something went wrong :(');
     return result;
   };
 
@@ -52,6 +52,6 @@ export function ApiProvider({ children }) {
 
 export function useApi() {
   const context = useContext(ApiContext);
-  if (!context) throw Error("useApi must be used within ApiProvider");
+  if (!context) throw Error('useApi must be used within ApiProvider');
   return context;
 }

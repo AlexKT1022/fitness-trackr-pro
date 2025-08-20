@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useApi } from "./ApiContext";
+import { useEffect, useState } from 'react';
+import { useApi } from './ApiContext';
 
 /** Queries the API and returns the data, loading status, and error message. */
 export default function useQuery(resource, tag) {

@@ -1,4 +1,4 @@
-import useMutation from "../api/useMutation";
+import useMutation from '../api/useMutation';
 
 /** Users can create new activities with a name and description. */
 export default function ActivityForm() {
@@ -6,11 +6,11 @@ export default function ActivityForm() {
     mutate: add,
     loading,
     error,
-  } = useMutation("POST", "/activities", ["activities"]);
+  } = useMutation('POST', '/activities', ['activities']);
 
   const addActivity = (formData) => {
-    const name = formData.get("name");
-    const description = formData.get("description");
+    const name = formData.get('name');
+    const description = formData.get('description');
     add({ name, description });
   };
 
@@ -26,7 +26,7 @@ export default function ActivityForm() {
           Description
           <input type="text" name="description" />
         </label>
-        <button>{loading ? "Adding..." : "Add activity"}</button>
+        <button>{loading ? 'Adding...' : 'Add activity'}</button>
         {error && <output>{error}</output>}
       </form>
     </>

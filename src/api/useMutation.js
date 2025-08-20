@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useApi } from "./ApiContext";
+import { useState } from 'react';
+import { useApi } from './ApiContext';
 
 /**
  * Returns a function to mutate some data via the API, as well as some state

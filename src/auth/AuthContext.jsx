@@ -4,9 +4,9 @@
  * all of which update the token in state.
  */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
-import { API } from "../api/ApiContext";
+import { API } from '../api/ApiContext';
 
 const AuthContext = createContext();
 
@@ -14,10 +14,10 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState();
 
   const register = async (credentials) => {
-    const response = await fetch(API + "/users/register", {
-      method: "POST",
+    const response = await fetch(API + '/users/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(credentials),
     });
@@ -27,10 +27,10 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (credentials) => {
-    const response = await fetch(API + "/users/login", {
-      method: "POST",
+    const response = await fetch(API + '/users/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(credentials),
     });
@@ -47,6 +47,6 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) throw Error("useAuth must be used within AuthProvider");
+  if (!context) throw Error('useAuth must be used within AuthProvider');
   return context;
 }
