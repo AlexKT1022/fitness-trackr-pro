@@ -12,11 +12,14 @@ export default function useQuery(resource, tag) {
   const query = async () => {
     setLoading(true);
     setError(null);
+
     try {
       const result = await request(resource);
+
       setData(result);
     } catch (e) {
       console.error(e);
+
       setError(e.message);
     } finally {
       setLoading(false);
@@ -25,6 +28,7 @@ export default function useQuery(resource, tag) {
 
   useEffect(() => {
     if (tag) provideTag(tag, query);
+
     query();
   }, []);
 
